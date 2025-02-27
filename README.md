@@ -1,8 +1,7 @@
 ## **Vision-Language Models Fail to Identify Relative Positions in Medical Images**
 
-<br/><br/>
-
 This repository contains all necessary files, organized into **three subfolders**:
+<br/><br/>
 
 ### 🗂️ **Dataset Overview**  
  `dataset` – Example cases from each experimental setup presented in the paper (images and corresponding question-answer pairs) 
