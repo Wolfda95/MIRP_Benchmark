@@ -1,38 +1,46 @@
-# Dataset
-Here are 10 example cases for each experimental setup that we present in the paper.<br>
-If accepted, we will provide a download link for the full dataset here.
+# **Dataset**
 
-Each subfolder for the Research Questions RQ1, RQ2, RQ3 and the Ablation Study AS, contains: 
-- Image folders with 10 rotated/flipped CT slices
-- Json files with the question answer pair (qa) for each CT slice
+The folders contain **10 example cases** for each experimental setup presented in the paper.<br>  
+If accepted, we will provide a **download link** for the full dataset here.
+<br/><br/>
 
+Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation Study (AS)** contains:  
+- **Image folders** with 10 rotated/flipped CT slices  
+- **JSON files** with corresponding question-answer (QA) pairs for each CT slice  
 
-### Folders
-- RQ1:
-    - `images`: CT slices
-    - `qa.json`: question answer pairs
-- RQ2:
-   - `image_dots`: CT slices with dot markers
-   - `image_letters`: CT slices with image markers
-   - `image_numbers`: CT slices with number markers
-   - `qa_dots.json`: qa for dot markers
-   - `qa_letters.json`: qa for letter markers
-   - `qa_numbers.json`: qa for number markers
-- RQ3:
-   - `image_dots`: CT slices with dot markers
-   - `image_letters`: CT slices with image markers
-   - `image_numbers`: CT slices with number markers
-   - `qa_dots.json`: qa for dot markers
-   - `qa_letters.json`: qa for letter markers
-   - `qa_numbers.json`: qa for number markers
- - AS:
-   - `image_dots`: white images with dot markers
-   - `image_letters`: white images with image markers
-   - `image_numbers`: white images with number markers
-   - `qa_dots.json`: qa for dot markers
-   - `qa_letters.json`: qa for letter markers
-   - `qa_numbers.json`: qa for number markers
- 
+---
+
+### **Folder Structure**  
+
+#### 📁 **RQ1**  
+- `images/` – CT slices  
+- `qa.json` – Question-answer pairs  
+
+#### 📁 **RQ2**  
+- `image_dots/` – CT slices with dot markers  
+- `image_letters/` – CT slices with letter markers  
+- `image_numbers/` – CT slices with number markers  
+- `qa_dots.json` – QA pairs for dot markers  
+- `qa_letters.json` – QA pairs for letter markers  
+- `qa_numbers.json` – QA pairs for number markers  
+
+#### 📁 **RQ3**  
+- `image_dots/` – CT slices with dot markers  
+- `image_letters/` – CT slices with letter markers  
+- `image_numbers/` – CT slices with number markers  
+- `qa_dots.json` – QA pairs for dot markers  
+- `qa_letters.json` – QA pairs for letter markers  
+- `qa_numbers.json` – QA pairs for number markers  
+
+#### 📁 **AS (Ablation Study)**  
+- `image_dots/` – White images with dot markers  
+- `image_letters/` – White images with letter markers  
+- `image_numbers/` – White images with number markers  
+- `qa_dots.json` – QA pairs for dot markers  
+- `qa_letters.json` – QA pairs for letter markers  
+- `qa_numbers.json` – QA pairs for number markers 
+
+----
 
 ## Fixed Prompt: 
 The json files contain the questions that we pass to the model. 
@@ -60,10 +68,12 @@ f"Q: {question_from_json}"
 "Now answer the real question:\n\n"
 f"Q: {question_from_json}"
 ```
-The example questions in the fixed prompt are chosen to match the question in the task. For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
+The example questions in the fixed prompt are chosen to match the question in the task. <br> 
+For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
 
 The code for the inference of the VLMs that contain those fixed prompts are in `inference_scripts`
 
+------
 ## Anatomic Structures: 
 We extracted the anatomical structures that the questions refer to using the Totalsegmentatior: https://github.com/wasserth/TotalSegmentator
 
