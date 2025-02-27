@@ -1,0 +1,172 @@
+[
+  {
+    "filename": "amos_img2_slice45.png",
+    "question_answer": [
+      {
+        "object1_name": "aorta",
+        "object2_name": "spleen",
+        "object1_gray": 52,
+        "object2_gray": 1,
+        "object1_center_x": 272.3134535367545,
+        "object1_center_y": 276.54091539528434,
+        "object2_center_x": 292.31620417951353,
+        "object2_center_y": 367.5964371360055,
+        "question": "Is the number 52 above the number 1?",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "filename": "amos_img3_slice15.png",
+    "question_answer": [
+      {
+        "object1_name": "right iliopsoas",
+        "object2_name": "prostate",
+        "object1_gray": 89,
+        "object2_gray": 22,
+        "object1_center_x": 359.0606767794632,
+        "object1_center_y": 226.48658109684948,
+        "object2_center_x": 257.19651240778,
+        "object2_center_y": 293.2696177062374,
+        "question": "Is the number 89 below the number 22?",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "filename": "amos_img3_slice68.png",
+    "question_answer": [
+      {
+        "object1_name": "spleen",
+        "object2_name": "left kidney",
+        "object1_gray": 1,
+        "object2_gray": 3,
+        "object1_center_x": 392.4089944845142,
+        "object1_center_y": 290.50700042426814,
+        "object2_center_x": 336.27615184004634,
+        "object2_center_y": 311.61663286004057,
+        "question": "Is the number 1 to the right of the number 3?",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "filename": "amos_img3_slice80.png",
+    "question_answer": [
+      {
+        "object1_name": "spleen",
+        "object2_name": "stomach",
+        "object1_gray": 1,
+        "object2_gray": 6,
+        "object1_center_x": 147.73138510808647,
+        "object1_center_y": 209.84947958366692,
+        "object2_center_x": 190.02411897025743,
+        "object2_center_y": 290.48287928017993,
+        "question": "Is the number 1 below the number 6?",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "filename": "amos_img12_slice81.png",
+    "question_answer": [
+      {
+        "object1_name": "stomach",
+        "object2_name": "gallbladder",
+        "object1_gray": 6,
+        "object2_gray": 4,
+        "object1_center_x": 255.60526315789474,
+        "object1_center_y": 179.6901688182721,
+        "object2_center_x": 285.84318936877077,
+        "object2_center_y": 340.4385382059801,
+        "question": "Is the number 6 above the number 4?",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "filename": "btcv_img61_slice111.png",
+    "question_answer": [
+      {
+        "object1_name": "aorta",
+        "object2_name": "spleen",
+        "object1_gray": 52,
+        "object2_gray": 1,
+        "object1_center_x": 275.04126984126987,
+        "object1_center_y": 264.34761904761905,
+        "object2_center_x": 402.25013728720484,
+        "object2_center_y": 295.96814936847886,
+        "question": "Is the number 52 to the left of the number 1?",
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "filename": "btcv_img63_slice84.png",
+    "question_answer": [
+      {
+        "object1_name": "right lung middle lobe",
+        "object2_name": "heart",
+        "object1_gray": 13,
+        "object2_gray": 51,
+        "object1_center_x": 143.28632799181725,
+        "object1_center_y": 184.236345039209,
+        "object2_center_x": 286.047878523685,
+        "object2_center_y": 178.2079337401918,
+        "question": "Is the number 13 to the right of the number 51?",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "filename": "btcv_img79_slice65.png",
+    "question_answer": [
+      {
+        "object1_name": "spleen",
+        "object2_name": "pancreas",
+        "object1_gray": 1,
+        "object2_gray": 7,
+        "object1_center_x": 227.18747346072186,
+        "object1_center_y": 370.1630573248408,
+        "object2_center_x": 289.57738095238096,
+        "object2_center_y": 288.8266369047619,
+        "question": "Is the number 1 to the right of the number 7?",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "filename": "btcv_img74_slice56.png",
+    "question_answer": [
+      {
+        "object1_name": "stomach",
+        "object2_name": "right kidney",
+        "object1_gray": 6,
+        "object2_gray": 2,
+        "object1_center_x": 272.20024914356895,
+        "object1_center_y": 131.69651199003425,
+        "object2_center_x": 170.57864941366762,
+        "object2_center_y": 289.6700363930449,
+        "question": "Is the number 6 below the number 2?",
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "filename": "btcv_img73_slice85.png",
+    "question_answer": [
+      {
+        "object1_name": "spleen",
+        "object2_name": "spinal cord",
+        "object1_gray": 1,
+        "object2_gray": 79,
+        "object1_center_x": 82.02598491198658,
+        "object1_center_y": 302.77116512992455,
+        "object2_center_x": 241.58500914076782,
+        "object2_center_y": 334.6142595978062,
+        "question": "Is the number 1 to the left of the number 79?",
+        "answer": 1
+      }
+    ]
+  }
+]

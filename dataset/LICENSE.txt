@@ -1,0 +1,14 @@
+This dataset is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Original datasets:
+- BTCV: https://zenodo.org/records/1169361
+- AMOS: https://zenodo.org/records/7155725
+Both under Creative Commons Attribution 4.0 International License (CC BY 4.0)
+
+Changes made:
+- Extraction of 2D slices in png format from the NIFTI volumes
+- Adding markers to the images
+- Adding json files with question-answer pairs about anatomical structures
+
+Full license text: https://creativecommons.org/licenses/by/4.0/
+

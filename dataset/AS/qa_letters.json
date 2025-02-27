@@ -1,0 +1,152 @@
+[
+  {
+    "filename": "image_91.png",
+    "question_answer": [
+      {
+        "object1_gray": "UW",
+        "object2_gray": "VM",
+        "question": "Are the letters UW to the right of the letters VM?",
+        "answer": 1,
+        "object1_center_x": 153,
+        "object1_center_y": 341,
+        "object2_center_x": 83,
+        "object2_center_y": 144
+      }
+    ]
+  },
+  {
+    "filename": "image_92.png",
+    "question_answer": [
+      {
+        "object1_gray": "VW",
+        "object2_gray": "XV",
+        "question": "Are the letters VW to the right of the letters XV?",
+        "answer": 0,
+        "object1_center_x": 86,
+        "object1_center_y": 317,
+        "object2_center_x": 385,
+        "object2_center_y": 336
+      }
+    ]
+  },
+  {
+    "filename": "image_93.png",
+    "question_answer": [
+      {
+        "object1_gray": "GK",
+        "object2_gray": "YP",
+        "question": "Are the letters GK to the left of the letters YP?",
+        "answer": 0,
+        "object1_center_x": 433,
+        "object1_center_y": 370,
+        "object2_center_x": 18,
+        "object2_center_y": 371
+      }
+    ]
+  },
+  {
+    "filename": "image_94.png",
+    "question_answer": [
+      {
+        "object1_gray": "DQ",
+        "object2_gray": "YR",
+        "question": "Are the letters DQ to the right of the letters YR?",
+        "answer": 1,
+        "object1_center_x": 140,
+        "object1_center_y": 158,
+        "object2_center_x": 79,
+        "object2_center_y": 302
+      }
+    ]
+  },
+  {
+    "filename": "image_95.png",
+    "question_answer": [
+      {
+        "object1_gray": "YX",
+        "object2_gray": "ZO",
+        "question": "Are the letters YX to the left of the letters ZO?",
+        "answer": 0,
+        "object1_center_x": 420,
+        "object1_center_y": 373,
+        "object2_center_x": 243,
+        "object2_center_y": 454
+      }
+    ]
+  },
+  {
+    "filename": "image_96.png",
+    "question_answer": [
+      {
+        "object1_gray": "WQ",
+        "object2_gray": "DJ",
+        "question": "Are the letters WQ to the right of the letters DJ?",
+        "answer": 0,
+        "object1_center_x": 256,
+        "object1_center_y": 53,
+        "object2_center_x": 492,
+        "object2_center_y": 380
+      }
+    ]
+  },
+  {
+    "filename": "image_97.png",
+    "question_answer": [
+      {
+        "object1_gray": "HO",
+        "object2_gray": "LA",
+        "question": "Are the letters HO to the left of the letters LA?",
+        "answer": 0,
+        "object1_center_x": 279,
+        "object1_center_y": 460,
+        "object2_center_x": 150,
+        "object2_center_y": 447
+      }
+    ]
+  },
+  {
+    "filename": "image_98.png",
+    "question_answer": [
+      {
+        "object1_gray": "AK",
+        "object2_gray": "DW",
+        "question": "Are the letters AK below the letters DW?",
+        "answer": 1,
+        "object1_center_x": 382,
+        "object1_center_y": 241,
+        "object2_center_x": 395,
+        "object2_center_y": 83
+      }
+    ]
+  },
+  {
+    "filename": "image_99.png",
+    "question_answer": [
+      {
+        "object1_gray": "AI",
+        "object2_gray": "GE",
+        "question": "Are the letters AI above the letters GE?",
+        "answer": 0,
+        "object1_center_x": 142,
+        "object1_center_y": 480,
+        "object2_center_x": 459,
+        "object2_center_y": 5
+      }
+    ]
+  },
+  {
+    "filename": "image_100.png",
+    "question_answer": [
+      {
+        "object1_gray": "NU",
+        "object2_gray": "ZT",
+        "question": "Are the letters NU below the letters ZT?",
+        "answer": 1,
+        "object1_center_x": 295,
+        "object1_center_y": 243,
+        "object2_center_x": 308,
+        "object2_center_y": 124
+      }
+    ]
+  }
+]

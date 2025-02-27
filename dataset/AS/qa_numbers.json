@@ -1,0 +1,152 @@
+[
+  {
+    "filename": "image_91.png",
+    "question_answer": [
+      {
+        "object1_gray": 45,
+        "object2_gray": 40,
+        "question": "Is the number 45 to the right of the number 40?",
+        "answer": 1,
+        "object1_center_x": 153,
+        "object1_center_y": 341,
+        "object2_center_x": 83,
+        "object2_center_y": 144
+      }
+    ]
+  },
+  {
+    "filename": "image_92.png",
+    "question_answer": [
+      {
+        "object1_gray": 105,
+        "object2_gray": 17,
+        "question": "Is the number 105 to the right of the number 17?",
+        "answer": 0,
+        "object1_center_x": 86,
+        "object1_center_y": 317,
+        "object2_center_x": 385,
+        "object2_center_y": 336
+      }
+    ]
+  },
+  {
+    "filename": "image_93.png",
+    "question_answer": [
+      {
+        "object1_gray": 40,
+        "object2_gray": 24,
+        "question": "Is the number 40 to the left of the number 24?",
+        "answer": 0,
+        "object1_center_x": 433,
+        "object1_center_y": 370,
+        "object2_center_x": 18,
+        "object2_center_y": 371
+      }
+    ]
+  },
+  {
+    "filename": "image_94.png",
+    "question_answer": [
+      {
+        "object1_gray": 109,
+        "object2_gray": 101,
+        "question": "Is the number 109 to the right of the number 101?",
+        "answer": 1,
+        "object1_center_x": 140,
+        "object1_center_y": 158,
+        "object2_center_x": 79,
+        "object2_center_y": 302
+      }
+    ]
+  },
+  {
+    "filename": "image_95.png",
+    "question_answer": [
+      {
+        "object1_gray": 79,
+        "object2_gray": 37,
+        "question": "Is the number 79 to the left of the number 37?",
+        "answer": 0,
+        "object1_center_x": 420,
+        "object1_center_y": 373,
+        "object2_center_x": 243,
+        "object2_center_y": 454
+      }
+    ]
+  },
+  {
+    "filename": "image_96.png",
+    "question_answer": [
+      {
+        "object1_gray": 71,
+        "object2_gray": 14,
+        "question": "Is the number 71 to the right of the number 14?",
+        "answer": 0,
+        "object1_center_x": 256,
+        "object1_center_y": 53,
+        "object2_center_x": 492,
+        "object2_center_y": 380
+      }
+    ]
+  },
+  {
+    "filename": "image_97.png",
+    "question_answer": [
+      {
+        "object1_gray": 12,
+        "object2_gray": 117,
+        "question": "Is the number 12 to the left of the number 117?",
+        "answer": 0,
+        "object1_center_x": 279,
+        "object1_center_y": 460,
+        "object2_center_x": 150,
+        "object2_center_y": 447
+      }
+    ]
+  },
+  {
+    "filename": "image_98.png",
+    "question_answer": [
+      {
+        "object1_gray": 48,
+        "object2_gray": 29,
+        "question": "Is the number 48 below the number 29?",
+        "answer": 1,
+        "object1_center_x": 382,
+        "object1_center_y": 241,
+        "object2_center_x": 395,
+        "object2_center_y": 83
+      }
+    ]
+  },
+  {
+    "filename": "image_99.png",
+    "question_answer": [
+      {
+        "object1_gray": 116,
+        "object2_gray": 11,
+        "question": "Is the number 116 above the number 11?",
+        "answer": 0,
+        "object1_center_x": 142,
+        "object1_center_y": 480,
+        "object2_center_x": 459,
+        "object2_center_y": 5
+      }
+    ]
+  },
+  {
+    "filename": "image_100.png",
+    "question_answer": [
+      {
+        "object1_gray": 7,
+        "object2_gray": 31,
+        "question": "Is the number 7 below the number 31?",
+        "answer": 1,
+        "object1_center_x": 295,
+        "object1_center_y": 243,
+        "object2_center_x": 308,
+        "object2_center_y": 124
+      }
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "filename": "image_91.png",
+    "question_answer": [
+      {
+        "object1_gray": "red",
+        "object2_gray": "blue",
+        "question": "Is the red dot to the right of the blue dot?",
+        "answer": 1,
+        "object1_center_x": 153,
+        "object1_center_y": 341,
+        "object2_center_x": 83,
+        "object2_center_y": 144
+      }
+    ]
+  },
+  {
+    "filename": "image_92.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot to the right of the red dot?",
+        "answer": 0,
+        "object1_center_x": 86,
+        "object1_center_y": 317,
+        "object2_center_x": 385,
+        "object2_center_y": 336
+      }
+    ]
+  },
+  {
+    "filename": "image_93.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot to the left of the red dot?",
+        "answer": 0,
+        "object1_center_x": 433,
+        "object1_center_y": 370,
+        "object2_center_x": 18,
+        "object2_center_y": 371
+      }
+    ]
+  },
+  {
+    "filename": "image_94.png",
+    "question_answer": [
+      {
+        "object1_gray": "red",
+        "object2_gray": "blue",
+        "question": "Is the red dot to the right of the blue dot?",
+        "answer": 1,
+        "object1_center_x": 140,
+        "object1_center_y": 158,
+        "object2_center_x": 79,
+        "object2_center_y": 302
+      }
+    ]
+  },
+  {
+    "filename": "image_95.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot to the left of the red dot?",
+        "answer": 0,
+        "object1_center_x": 420,
+        "object1_center_y": 373,
+        "object2_center_x": 243,
+        "object2_center_y": 454
+      }
+    ]
+  },
+  {
+    "filename": "image_96.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot to the right of the red dot?",
+        "answer": 0,
+        "object1_center_x": 256,
+        "object1_center_y": 53,
+        "object2_center_x": 492,
+        "object2_center_y": 380
+      }
+    ]
+  },
+  {
+    "filename": "image_97.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot to the left of the red dot?",
+        "answer": 0,
+        "object1_center_x": 279,
+        "object1_center_y": 460,
+        "object2_center_x": 150,
+        "object2_center_y": 447
+      }
+    ]
+  },
+  {
+    "filename": "image_98.png",
+    "question_answer": [
+      {
+        "object1_gray": "red",
+        "object2_gray": "blue",
+        "question": "Is the red dot below the blue dot?",
+        "answer": 1,
+        "object1_center_x": 382,
+        "object1_center_y": 241,
+        "object2_center_x": 395,
+        "object2_center_y": 83
+      }
+    ]
+  },
+  {
+    "filename": "image_99.png",
+    "question_answer": [
+      {
+        "object1_gray": "blue",
+        "object2_gray": "red",
+        "question": "Is the blue dot above the red dot?",
+        "answer": 0,
+        "object1_center_x": 142,
+        "object1_center_y": 480,
+        "object2_center_x": 459,
+        "object2_center_y": 5
+      }
+    ]
+  },
+  {
+    "filename": "image_100.png",
+    "question_answer": [
+      {
+        "object1_gray": "red",
+        "object2_gray": "blue",
+        "question": "Is the red dot below the blue dot?",
+        "answer": 1,
+        "object1_center_x": 295,
+        "object1_center_y": 243,
+        "object2_center_x": 308,
+        "object2_center_y": 124
+      }
+    ]
+  }
+]
