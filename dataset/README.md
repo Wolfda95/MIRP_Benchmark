@@ -62,7 +62,7 @@ f"Q: {question_from_json}"
 ```
 The example questions in the fixed prompt are chosen to match the question in the task. For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
 
-The code for the inference of the VLMs that contain those fixed prompts are in [inference_scripts](https://github.com/Wolfda95/MIRP-Benchmark/tree/main/inference_scripts).
+The code for the inference of the VLMs that contain those fixed prompts are in `inference_scripts`
 
 ## Anatomic Structures: 
 We extracted the anatomical structures that the questions refer to using the Totalsegmentatior: https://github.com/wasserth/TotalSegmentator
