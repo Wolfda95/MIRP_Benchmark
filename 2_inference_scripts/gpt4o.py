@@ -1,59 +1,62 @@
 """
-Automated Image Processing and Model Call Script for Medical QA Tasks with Images
+Script for Running Visual QA Experiments with OpenAI's GPT-4o via API.
 
-This script processes medical image datasets, selects images and corresponding 
-question-answer (QA) data, and sends model calls to evaluate responses. 
-It organizes the results and saves them as JSON files.
+Overview:
+This script processes images and associated questions, sends them via the API to OpenAI's GPT-4o model,
+and saves the model's responses in structured JSON files for further analysis.
 
-Workflow:
-1. **Dataset and Task Selection**: 
-   - The script defines multiple tasks (`experiments`) associated with different 
-     image preprocessing techniques and QA files.
-   - The dataset directory is set dynamically based on the selected dataset.
+Prerequisites:
+1. An OpenAI API key must be available as the environment variable `OPENAI_API_KEY`.
+2. The MIRP Benchmark dataset must be downloaded locally.
+3. Required Python packages:
+    - Built-in: `os`, `sys`, `json`, `random`, `time`, `io`, `base64`
+    - External: `openai`, `PIL` (from Pillow)
 
-2. **Directory Setup**:
-   - A results directory (`RESULTS_ROOT`) is created for each task.
 
-3. **QA Data Extraction**:
-   - QA data is read from JSON files for each task.
-   - Images are randomly sampled or the full dataset is used.
+Usage Instructions:
+1. Scroll to the main block (`if __name__ == "__main__":`) and locate the section:
+   "Paths and Experiment Selection".
+   1.1 Set `dataset_dir` to the path where your dataset is stored.
+   1.2 Set `RESULTS_ROOT` to the directory where you want to save the results.
+   1.3 Specify the experiments you want to run in the `experiments` list (e.g., ['RQ1', 'RQ2']).
+2. Run the script.
+3. For each task, a dedicated results folder will be created, and responses will be saved in
+   JSON format for each run (3 runs per task by default).
 
-4. **Image Processing**:
-   - Images are converted to base64 format for model usage.
 
-5. **Model Call Execution**:
-   - A structured prompt is sent to the model with the image 
-     and corresponding question.
-   - Responses are collected and stored.
+Functionality Summary:
+1. QA Data Extraction:
+   - Loads question-answer pairs from JSON files for each task.
+   - Uses either random sampling or the full dataset, depending on configuration.
+2. Image Processing:
+   - Converts images to RGB format if necessary.
+   - Encodes images in base64 format for API compatibility.
+3. API Call Execution:
+   - Constructs structured prompts for binary QA tasks.
+   - Sends image + question to GPT-4o via OpenAI's API.
+   - Collects and records the model’s responses.
+4. Results Storage:
+   - Responses are saved in structured JSON files.
+   - Each experiment is run three times to ensure result consistency.
 
-6. **Results Storage**:
-   - Results are saved as JSON files with structured metadata.
-   - Multiple runs are performed to validate consistency.
-
-Dependencies:
-    - `os`, `sys`, `json`, `random`, `time`, 
-    - `torch`
-    - `PIL` (for image processing)
-    - `vllm`
-    - `base64`
-    - `io`
 
 Notes:
-    - Adjust dataset and task selection in `DATASETS` and `experiments`.
-    - The script uses a fixed seed (`random.seed(2025)`) for reproducibility.
+- Ensure the `openai` package is correctly installed and configured with your API key.
+- The script uses a fixed random seed (`random.seed(2025)`) for reproducibility.
 """
 
 
-import os
-import sys
-import json
-import time
-import random
 import base64
-from vllm import LLM
-from vllm.sampling_params import SamplingParams
+import openai
+import os
 from io import BytesIO
 from PIL import Image
+import json
+import sys
+import random
+import time
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def encode_image_from_bytes(image):
@@ -239,16 +242,16 @@ def get_qa(img_file_name, json_dir):
     return questions_answers
 
 
-def make_model_call(llm, questions_data, base64_image, additional_question):
+def make_better_api_call(questions_data, base64_image, additional_question):
     """
-    Calls the model with a medical image and a question about its content.
+    Sends a structured API call to OpenAI's GPT model with a medical image 
+    and a question about its content.
 
     Args:
-        llm (LLM): The loaded model.
         questions_data (dict): A dictionary containing:
             - 'question' (str): The question to ask about the image.
             - 'answer' (str): The expected answer.
-        base64_image (str): The image base64-encoded.
+        base64_image (str): A base64-encoded PNG image of a 2D axial CT scan.
         additional_question (dict): A dictionary containing:
             - 'question' (str): A sample question to demonstrate the response format.
             - 'answer' (str): The expected response format ('1' or '0').
@@ -256,7 +259,7 @@ def make_model_call(llm, questions_data, base64_image, additional_question):
     Returns:
         list[dict]: A list containing a single dictionary with:
             - 'question' (str): The question asked.
-            - 'model_answer' (str): The cleaned AI-generated answer.
+            - 'model_answer' (str): The AI-generated answer.
             - 'expected_answer' (str): The expected answer for comparison.
             - 'entire_prompt' (str): The full prompt used in the API call.
 
@@ -265,7 +268,7 @@ def make_model_call(llm, questions_data, base64_image, additional_question):
     format along with the textual question. The model response is then stored 
     along with the original question and expected answer.
     """
-    # List for results
+
     results = []
 
     prompt = (
@@ -282,19 +285,28 @@ def make_model_call(llm, questions_data, base64_image, additional_question):
 
     messages = [
         {
-            "role": "user",
-            "content": [
-                {"type": "text", "text": prompt},
-                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}}
-            ]
+            "type": "text",
+            "text": prompt
         },
+        {
+            "type": "image_url",
+            "image_url": {"url": f"data:image/png;base64,{base64_image}", "detail": "high"}
+        }
     ]
 
-    outputs = llm.chat(messages, sampling_params=sampling_params)
+    response = openai.chat.completions.create(
+        model="gpt-4o-2024-08-06",
+        messages=[
+            {"role": "user", "content": messages}
+        ],
+        temperature=0
+    )
+
+    model_answer = response.choices[0].message.content
 
     results.append({
         "question": questions_data['question'],
-        "model_answer": outputs[0].outputs[0].text,
+        "model_answer": model_answer,
         "expected_answer": questions_data['answer'],
         "entire_prompt": prompt
     })
@@ -304,22 +316,17 @@ def make_model_call(llm, questions_data, base64_image, additional_question):
 
 if __name__ == "__main__":
 
-    model_dir = "models/Pixtral-12B-2409"
-
-    sampling_params = SamplingParams(max_tokens=8192)
-
-    llm = LLM(
-        model="models/Pixtral-12B-2409",
-        tokenizer_mode="mistral",
-        gpu_memory_utilization=0.95,  # Maximale GPU-Nutzung
-        max_model_len=32000,          # Reduzierte Sequenzlänge
-    )
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Paths and Experiment Selection
+    # ──────────────────────────────────────────────────────────────────────────────
 
     dataset_dir = os.path.join('../dataset')
 
     RESULTS_ROOT = 'results'  # path for results directory
 
     experiments = ['RQ1', 'RQ2', 'RQ3', 'AS']  # select the experiments here
+
+    # ──────────────────────────────────────────────────────────────────────────────
 
     for exp in experiments:
 
@@ -394,16 +401,15 @@ if __name__ == "__main__":
 
                     base64_image = get_clean_image(original_image_path)
 
-                    results_call = make_model_call(llm,
-                                                   question_data[0], base64_image,
-                                                   additional_question=additional_question[0])
+                    results_call = make_better_api_call(
+                        question_data[0], base64_image, additional_question=additional_question[0])
 
                     dataset_results.append({
                         "file_name": image,
                         "results_call": results_call
                     })
 
-                results_file_name = f"{selected_qa.replace('.json', '')}_{mo_file_name_appendix}_add_run_{i}.json"
+                results_file_name = f"{selected_qa.replace('.json', '')}_{mo_file_name_appendix}_run_{i}.json"
 
                 save_name = os.path.join(
                     RESULTS_BASE, results_file_name)
@@ -414,3 +420,5 @@ if __name__ == "__main__":
 
                 elapsed_time = end_time - start_time
                 print(f"Runtime for {selected_qa.replace('.json', '')} with {selected_image} : {elapsed_time:.2f} seconds")
+
+        print('###')

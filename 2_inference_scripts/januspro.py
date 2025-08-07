@@ -1,47 +1,52 @@
 """
-Automated Image Processing and Model Call Script for Medical QA Tasks with Images
+Script for Running Visual QA Experiments with DeepSeek's JanusPro model locally.
 
-This script processes medical image datasets, selects images and corresponding 
-question-answer (QA) data, and sends model calls to evaluate responses. 
-It organizes the results and saves them as JSON files.
+Overview:
+This script processes medical images and related questions, sends them through a locally
+loaded Llama3.2 model, and stores the model’s binary responses in structured JSON files for further analysis.
 
-Workflow:
-1. **Dataset and Task Selection**: 
-   - The script defines multiple tasks (`experiments`) associated with different 
-     image preprocessing techniques and QA files.
-   - The dataset directory is set dynamically based on the selected dataset.
 
-2. **Directory Setup**:
-   - A results directory (`RESULTS_ROOT`) is created for each task.
+Prerequisites:
+1. You need a Nvidia GPU with sufficient memory to run the model. (We used a A6000 48GB GPU.)
+2. You must download the JanusPro model "Janus-Pro-7B" from HugginfFace and place it in a subdirectory called `models`.
+3. You must download the MRIP Benchmark dataset.
+4. Required Python packages:
+    - Built-in: `os`, `sys`, `json`, `random`, `time`
+    - External: `torch`, `PIL` (Pillow), `transformers`, `janus`
 
-3. **QA Data Extraction**:
+
+Usage Instructions:
+1. Scroll to the main block (`if __name__ == "__main__":`) and locate the section:
+   "Paths and Experiment Selection".
+   1.1 Set `dataset_dir` to the path where your dataset is stored.
+   1.2 Set `RESULTS_ROOT` to the directory where you want to save the results.
+   1.3 Specify the experiments you want to run in the `experiments` list (e.g., ['RQ1', 'RQ2']).
+2. Run the script.
+3. For each task, a dedicated results folder will be created, and responses will be saved in
+   JSON format for each run (3 runs per task by default).
+
+
+Functionality Summary:
+1. QA Data Extraction:
    - QA data is read from JSON files for each task.
    - Images are randomly sampled or the full dataset is used.
-
-4. **Image Processing**:
-   - The images are processed with the janus specifiv packages.
-
-5. **Model Call Execution**:
-   - A structured prompt is sent to the model with the image 
+2. Image Processing:
+   - Images are converted to base64 format for model usage.
+3. Model Call Execution:
+   - A structured prompt is sent to the model with the image
      and corresponding question.
    - Responses are collected and stored.
-
-6. **Results Storage**:
+4. Results Storage:
    - Results are saved as JSON files with structured metadata.
    - Multiple runs are performed to validate consistency.
 
-Dependencies:
-    - `os`, `sys`, `json`, `random`, `time`
-    - `torch`
-    - `transformers`
-    - `janus` (official repository)
-
 
 Notes:
-    - Ensure the janus` package is properly installed.
-    - Adjust dataset and task selection in `DATASETS` and `experiments`.
-    - The script uses a fixed seed (`random.seed(2025)`) for reproducibility.
+- The model runs locally via `transformers`; no internet or API key is required.
+- The script uses a fixed random seed (`random.seed(2025)`) to ensure reproducibility.
+- Ensure adequate GPU memory is available for running the 12B Pixtral model.
 """
+
 
 import os
 import sys
@@ -173,6 +178,10 @@ def make_model_call(model, questions_data, original_image_path, additional_quest
 
 if __name__ == "__main__":
 
+
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Model
+    # ──────────────────────────────────────────────────────────────────────────────
     MODEL_SIZE = '7B'  # 1B, 7B
     model_path = f'deepseek-ai/Janus-Pro-{MODEL_SIZE}'
     vl_chat_processor: VLChatProcessor = VLChatProcessor.from_pretrained(model_path)
@@ -182,12 +191,17 @@ if __name__ == "__main__":
         model_path, trust_remote_code=True
     )
     vl_gpt = vl_gpt.to(torch.bfloat16).cuda().eval()
+    # ──────────────────────────────────────────────────────────────────────────────
 
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Paths and Experiment Selection
+    # ──────────────────────────────────────────────────────────────────────────────
     dataset_dir = os.path.join('../dataset')
 
     RESULTS_ROOT = 'results'  # path for results directory
 
     experiments = ['RQ1', 'RQ2', 'RQ3', 'AS']  # select the experiments here
+    # ──────────────────────────────────────────────────────────────────────────────
 
     for exp in experiments:
 

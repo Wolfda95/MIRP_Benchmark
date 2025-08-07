@@ -1,53 +1,89 @@
 """
-Automated Image Processing and Model Call Script for Medical QA Tasks with Images
+Script for Running Visual QA Experiments with Mistrals's Pixtral model locally.
 
-This script processes medical image datasets, selects images and corresponding 
-question-answer (QA) data, and sends model calls to evaluate responses. 
-It organizes the results and saves them as JSON files.
+Overview:
+This script processes medical images and related questions, sends them through a locally
+loaded Pixtral model, and stores the model’s binary responses in structured JSON files for further analysis.
 
-Workflow:
-1. **Dataset and Task Selection**: 
-   - The script defines multiple tasks (`experiments`) associated with different 
-     image preprocessing techniques and QA files.
-   - The dataset directory is set dynamically based on the selected dataset.
 
-2. **Directory Setup**:
-   - A results directory (`RESULTS_ROOT`) is created for each task.
+Prerequisites:
+1. You need a Nvidia GPU with sufficient memory to run the model. (We used a A6000 48GB GPU.)
+2. You must download the Pixtral model "Pixtral-12B-2409" from HugginfFace and place it in a subdirectory called `models`.
+    (If you want to use a different model from HuggingFace with the vllm Library, scroll to the main block (`if __name__ == "__main__":`) and locate the section: "Model" to change the model name.)
+3. You must download the MRIP Benchmark dataset.
+4. Required Python packages:
+    - Built-in: `os`, `sys`, `json`, `random`, `time`, `base64`, `io`
+    - External: `torch`, `PIL` (Pillow), `vllm`
 
-3. **QA Data Extraction**:
+
+Usage Instructions:
+1. Scroll to the main block (`if __name__ == "__main__":`) and locate the section:
+   "Paths and Experiment Selection".
+   1.1 Set `dataset_dir` to the path where your dataset is stored.
+   1.2 Set `RESULTS_ROOT` to the directory where you want to save the results.
+   1.3 Specify the experiments you want to run in the `experiments` list (e.g., ['RQ1', 'RQ2']).
+2. Run the script.
+3. For each task, a dedicated results folder will be created, and responses will be saved in
+   JSON format for each run (3 runs per task by default).
+
+
+Functionality Summary:
+1. QA Data Extraction:
    - QA data is read from JSON files for each task.
    - Images are randomly sampled or the full dataset is used.
-
-4. **Image Processing**:
+2. Image Processing:
    - Images are converted to base64 format for model usage.
-
-5. **Model Call Execution**:
-   - A structured prompt is sent to the model with the image 
+3. Model Call Execution:
+   - A structured prompt is sent to the model with the image
      and corresponding question.
    - Responses are collected and stored.
-
-6. **Results Storage**:
+4. Results Storage:
    - Results are saved as JSON files with structured metadata.
    - Multiple runs are performed to validate consistency.
 
-Dependencies:
-    - `os`, `sys`, `json`, `random`, `time`, 
-    - `torch`
-    - `PIL` (for image processing)
-    - `transformers`
 
 Notes:
-    - Adjust dataset and task selection in `DATASETS` and `experiments`.
-    - The script uses a fixed seed (`random.seed(2025)`) for reproducibility.
+- The model runs locally via `vllm`; no internet or API key is required.
+- The script uses a fixed random seed (`random.seed(2025)`) to ensure reproducibility.
+- Ensure adequate GPU memory is available for running the 12B Pixtral model.
 """
+
+
 import os
 import sys
 import json
-import random
-import torch
 import time
+import random
+import base64
+from vllm import LLM
+from vllm.sampling_params import SamplingParams
+from io import BytesIO
 from PIL import Image
-from transformers import MllamaForConditionalGeneration, AutoProcessor
+
+
+def encode_image_from_bytes(image):
+    """
+    Encodes an image object into a base64-encoded PNG string.
+
+    Args:
+        image (PIL.Image.Image): The image to encode.
+
+    Returns:
+        str: Base64-encoded string representation of the image.
+
+    Example:
+        ```python
+        from PIL import Image
+        import base64
+
+        img = Image.open("example.png")
+        encoded_string = encode_image_from_bytes(img)
+        print(encoded_string)
+        ```
+    """
+    buffered = BytesIO()
+    image.save(buffered, format="PNG")
+    return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
 
 def is_grayscale(image):
@@ -208,16 +244,16 @@ def get_qa(img_file_name, json_dir):
     return questions_answers
 
 
-def make_model_call(model, questions_data, image, additional_question):
+def make_model_call(llm, questions_data, base64_image, additional_question):
     """
     Calls the model with a medical image and a question about its content.
 
     Args:
-        model (MllamaForConditionalGeneration): The loaded model.
+        llm (LLM): The loaded model.
         questions_data (dict): A dictionary containing:
             - 'question' (str): The question to ask about the image.
             - 'answer' (str): The expected answer.
-        image (str): The image base64-encoded.
+        base64_image (str): The image base64-encoded.
         additional_question (dict): A dictionary containing:
             - 'question' (str): A sample question to demonstrate the response format.
             - 'answer' (str): The expected response format ('1' or '0').
@@ -234,7 +270,7 @@ def make_model_call(model, questions_data, image, additional_question):
     format along with the textual question. The model response is then stored 
     along with the original question and expected answer.
     """
-
+    # List for results
     results = []
 
     prompt = (
@@ -250,31 +286,20 @@ def make_model_call(model, questions_data, image, additional_question):
     )
 
     messages = [
-        {"role": "user", "content": [
-            {"type": "text", "text": prompt},
-            {"type": "image"}
-        ]}
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": prompt},
+                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}}
+            ]
+        },
     ]
 
-    input_text = processor.apply_chat_template(
-        messages, add_generation_prompt=True)
-    inputs = processor(
-        image,
-        input_text,
-        add_special_tokens=False,
-        return_tensors="pt"
-    ).to(model.device)
-
-    output = model.generate(**inputs, max_new_tokens=1024)
-
-    model_answer = processor.decode(output[0])
-
-    cleaned_answer = model_answer.split(
-        '>', 7)[-1].replace('<|eot_id|>', '')
+    outputs = llm.chat(messages, sampling_params=sampling_params)
 
     results.append({
         "question": questions_data['question'],
-        "model_answer": cleaned_answer.replace('\n', ''),
+        "model_answer": outputs[0].outputs[0].text,
         "expected_answer": questions_data['answer'],
         "entire_prompt": prompt
     })
@@ -284,20 +309,31 @@ def make_model_call(model, questions_data, image, additional_question):
 
 if __name__ == "__main__":
 
-    model_id = "models/Llama-3.2-11B-Vision-Instruct"
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Model
+    # ──────────────────────────────────────────────────────────────────────────────
 
-    model = MllamaForConditionalGeneration.from_pretrained(
-        model_id,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
+    model_dir = "models/Pixtral-12B-2409"
+
+    sampling_params = SamplingParams(max_tokens=8192)
+
+    llm = LLM(
+        model="models/Pixtral-12B-2409",
+        tokenizer_mode="mistral",
+        gpu_memory_utilization=0.95,  # Maximale GPU-Nutzung
+        max_model_len=32000,          # Reduzierte Sequenzlänge
     )
-    processor = AutoProcessor.from_pretrained(model_id)
+    # ──────────────────────────────────────────────────────────────────────────────
 
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Paths and Experiment Selection
+    # ──────────────────────────────────────────────────────────────────────────────
     dataset_dir = os.path.join('../dataset')
 
     RESULTS_ROOT = 'results'  # path for results directory
 
     experiments = ['RQ1', 'RQ2', 'RQ3', 'AS']  # select the experiments here
+    # ──────────────────────────────────────────────────────────────────────────────
 
     for exp in experiments:
 
@@ -370,11 +406,11 @@ if __name__ == "__main__":
                     original_image_path = os.path.join(
                         image_files_path, image)
 
-                    rgb_image = get_clean_image(original_image_path)
+                    base64_image = get_clean_image(original_image_path)
 
-                    results_call = make_model_call(
-                        model, question_data[0], rgb_image,
-                        additional_question=additional_question[0])
+                    results_call = make_model_call(llm,
+                                                   question_data[0], base64_image,
+                                                   additional_question=additional_question[0])
 
                     dataset_results.append({
                         "file_name": image,
