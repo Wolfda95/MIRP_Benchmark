@@ -67,13 +67,7 @@ Each subdirectory includes a **`README.md`** with further details.
 ---
 # For Details about the Paper, Visit our Project Page: 
 
-<figure>
-  <a href="https://wolfda95.github.io/your_other_left/" target="_blank">
-    <img src="https://wolfda95.github.io/your_other_left/static/images/1.PNG"
-         alt="Your other Left – Project Page teaser" width="100%">
-  </a>
-  <figcaption><em>Project page with paper summary, results, leaderboards, videos and a generated podcast.</em></figcaption>
-</figure>
+[![Project Page](static/GitHub.png)](https://wolfda95.github.io/your_other_left/)
 
 
 ---
