@@ -46,16 +46,35 @@
 </div>
 
 ---
+# How to use the MIRP Benchmark Dataset and Code: 
 
-### 🗂️ **Dataset Overview**  
- `dataset` – Example cases from each experimental setup presented in the paper (images and corresponding question-answer pairs) 
+### 1. Download the Dataset 🗂️  
+Go to `1_dataset_download`: Here you find all information on how to download the dataset and on how the dataset is structured. 
 
-### 🚀 **Running the VLMs**  
- `inference_scripts` – Code for running inference on the evaluated VLMs: **GPT-4o, Pixtral, Llama3.2, and JanusPro**.  
+### 2. Run Inference on the Vision-Language Models 🚀 
+Go to `2_inference_scripts`: Here you find the code and all information for running inference on the VLMs: GPT-4o, Pixtral, Llama3.2, and JanusPro.  
 
-### 📊 **Experimental Results**  
- `results` – The results of all experiments and the code for evaluating VLM responses.  
+### 3. Evaluate the Answers of the Vision-Language Models 📊   
+Go to `3_evaluation_scrips`: Here you find the code and all information to evaluate the models` answers and to calcuate the statistics. 
 
-<br/><br/>
+### Our Results
+In `our_results` you can download our results. 
+
+<br/>
 
 Each subdirectory includes a **`README.md`** with further details.  
+
+---
+# Cite: 
+```latex
+@inproceedings{wolf2025medvlms,
+  title={Your other Left! Vision-Language Models Fail to Identify Relative Positions in Medical Images},
+  author={Wolf, Daniel and Hillenhagen, Heiko and Taskin, Billurvan and B{\"a}uerle, Alex and Beer, Meinrad and G{\"o}tz, Michael and Ropinski, Timo},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention -- MICCAI},
+  year={2025},
+  organization={Springer Nature Switzerland}
+  doi={tba}
+}
+```
+If you have any questions, please email me:
+[daniel.wolf@uni-ulm.de](mailto:daniel.wolf@uni-ulm.de)
