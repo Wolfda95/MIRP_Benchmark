@@ -49,20 +49,32 @@
 # How to use the MIRP Benchmark Dataset and Code: 
 
 ### 1. Download the Dataset 🗂️  
-Go to `1_dataset_download`: Here you find all information on how to download the dataset and on how the dataset is structured. 
+Go to [`1_dataset_guide/`](1_dataset_guide): Instructions on how to download the MIRP Benchmark dataset and details on its structure.    
 
 ### 2. Run Inference on the Vision-Language Models 🚀 
-Go to `2_inference_scripts`: Here you find the code and all information for running inference on the VLMs: GPT-4o, Pixtral, Llama3.2, and JanusPro.  
+Go to [`2_inference_code/`](2_inference_code): Scripts for running inference on Vision-Language Models (GPT-4o, Pixtral, Llama3.2, JanusPro).  
 
 ### 3. Evaluate the Answers of the Vision-Language Models 📊   
-Go to `3_evaluation_scrips`: Here you find the code and all information to evaluate the models` answers and to calcuate the statistics. 
+Go to [`3_evaluation_code/`](3_evaluation_code): Scripts for evaluating model outputs and computing statistics.
 
 ### Our Results
-In `our_results` you can download our results. 
+Go to [`our_results/`](our_results): Our precomputed results for comparison. 
 
 <br/>
 
 Each subdirectory includes a **`README.md`** with further details.  
+
+---
+# For Details about the Paper, Visit our Project Page: 
+
+<figure>
+  <a href="https://wolfda95.github.io/your_other_left/" target="_blank">
+    <img src="https://wolfda95.github.io/your_other_left/static/images/1.PNG"
+         alt="Your other Left – Project Page teaser" width="100%">
+  </a>
+  <figcaption><em>Project page with paper summary, results, leaderboards, videos and a generated podcast.</em></figcaption>
+</figure>
+
 
 ---
 # Cite: 
