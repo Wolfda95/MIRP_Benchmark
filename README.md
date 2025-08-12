@@ -82,5 +82,5 @@ Each subdirectory includes a **`README.md`** with further details.
   doi={tba}
 }
 ```
-If you have any questions, please email me:
-[daniel.wolf@uni-ulm.de](mailto:daniel.wolf@uni-ulm.de)
+If you have any questions, please email
+[daniel.wolf@uni-ulm.de](mailto:daniel.wolf@uni-ulm.de) and [heiko.hillenhagen@uni-ulm.de](mailto:heiko.hillenhagen@uni-ulm.de)
