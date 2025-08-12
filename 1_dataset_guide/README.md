@@ -1,42 +1,62 @@
-# **Dataset**
+# **Download the Dataset**
 
-The folders contain **10 example cases** for each experimental setup presented in the paper.<br>  
-If accepted, we will provide a **download link** for the full dataset here.
-<br/><br/>
+You can download the full MIRP Benchmark dataset in two ways:  
+
+- **Hugging Face**: [MIRP_Hugging_Face](https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left)  
+- **Google Drive**: [MIRP_Google_Drive](https://drive.google.com/file/d/1ILjP6koHgHI7pkXcoce70nNncyz-48KM/view)  
+
+Both options provide a `.zip` file containing the datasets for all Research Questions (RQ1, RQ2, RQ3) and the Ablation Study (AS). 
+
+<br/>
+
+### **Preview Before Downloading**
+If you want to check how the dataset looks like before downloading it:  <br>
+This folder structure here mirrors the structure of the full dataset but contains **only 10 example cases** for each setup.  
+
+<br/>
+
+### **Next Step**
+After downloading and extracting the dataset, please:
+1. Familiarize yourself with the structure (see below).  
+2. Continue to the [`2_inference_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/2_inference_code) folder to run inference.
+ 
+
+<br/> <br/>
+---
+# Information about the Dataset: 
 
 Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation Study (AS)** contains:  
-- **Image folders** with 10 rotated/flipped CT slices  
+- **Image folders** with the rotated/flipped CT slices  
 - **JSON files** with corresponding question-answer (QA) pairs for each CT slice  
 
----
 
 ### **Folder Structure**  
 
 #### 📁 **RQ1**  
 - `images/` – CT slices  
-- `qa.json` – Question-answer pairs  
+- `qa.json` – Question-answer pairs
 
 #### 📁 **RQ2**  
 - `image_dots/` – CT slices with dot markers  
 - `image_letters/` – CT slices with letter markers  
 - `image_numbers/` – CT slices with number markers  
-- `qa_dots.json` – QA pairs for dot markers  
-- `qa_letters.json` – QA pairs for letter markers  
-- `qa_numbers.json` – QA pairs for number markers  
+- `qa_dots.json` – QA pairs with anatomical names for dot markers
+- `qa_letters.json` – QA pairs with anatomical names for letter markers  
+- `qa_numbers.json` – QA pairs with anatomical names for number markers  
 
 #### 📁 **RQ3**  
 - `image_dots/` – CT slices with dot markers  
 - `image_letters/` – CT slices with letter markers  
 - `image_numbers/` – CT slices with number markers  
-- `qa_dots.json` – QA pairs for dot markers  
-- `qa_letters.json` – QA pairs for letter markers  
-- `qa_numbers.json` – QA pairs for number markers  
+- `qa_dots.json` – QA pairs without anatomical names for dot markers 
+- `qa_letters.json` – QA pairs without anatomical names for letter markers  
+- `qa_numbers.json` – QA pairs without anatomical names for number markers  
 
 #### 📁 **AS (Ablation Study)**  
 - `image_dots/` – White images with dot markers  
 - `image_letters/` – White images with letter markers  
 - `image_numbers/` – White images with number markers  
-- `qa_dots.json` – QA pairs for dot markers  
+- `qa_dots.json` – QA pairs for dot markers 
 - `qa_letters.json` – QA pairs for letter markers  
 - `qa_numbers.json` – QA pairs for number markers 
 
@@ -71,13 +91,13 @@ f"Q: {question_from_json}"
 The example questions in the fixed prompt are chosen to match the question in the task. <br> 
 For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
 
-The code for the inference of the VLMs that contain those fixed prompts are in `inference_scripts`
+The [`2_inference_code/`](2_inference_code) already contains those fixed prompts.
 
 ------
 ## Anatomic Structures: 
 We extracted the anatomical structures that the questions refer to using the Totalsegmentatior: https://github.com/wasserth/TotalSegmentator
 
-Here is the list of all the structures, we have grouped the different vertebrae and ribs together. 
+Here is the list of all the structures (we have grouped the different vertebrae and ribs together): 
 
   |Index|TotalSegmentator name
   |:-----|:-----|
