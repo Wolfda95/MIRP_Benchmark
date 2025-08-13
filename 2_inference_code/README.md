@@ -143,7 +143,7 @@ To run a different Hugging Face model that is compatible with the **Transformer*
    - **Built-in:** `os`, `sys`, `json`, `random`, `time`  
    - **External:** `torch`, `PIL` (Pillow), `transformers`, `janus`
 
-4. **Configure `llama.py`**  
+4. **Configure `januspro.py`**  
    - Open `januspro.py` and scroll to the main block `if __name__ == "__main__":`  
    - In the **"Paths and Experiment Selection"** section:  
      - Set `dataset_dir` → path to your downloaded MIRP dataset  
@@ -170,10 +170,75 @@ To run a different Hugging Face model that is compatible with the **Transformer*
 
 
 <details>
-<summary><h3>Rrun other open Models from Hugging Face</h3></summary>
-  
- ### Test
- 
+<summary><h3>Run other open models from Hugging Face</h3></summary>
+
+If you want to run **other open models** from Hugging Face:
+
+- **Based on the vLLM library** → Use `pixtral.py` and its instructions as your starting point.  
+- **Based on the Transformers library** → Use `llama.py` and its instructions as your starting point.  
+
+### 🔧 Adapting the code
+1. Open the script and scroll to the main block `if __name__ == "__main__":`
+2. In the **"Model"** section, replace the current model name with the desired Hugging Face model name.  
+3. Depending on the model, you may need to adjust additional code to ensure compatibility.
+
+<br/>
+
+### 🆕 If starting a new script
+
+Below are the **initial prompts** we used: 
+
+
+RQ1, RQ2, RQ3
+```python
+"The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. "
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Ignore anatomical correctness; focus solely on what the image shows.\n"
+"Example:\n"
+"Q: \"Is the aorta above the spleen?\" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+
+AS (Ablation Study)
+```python
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Focus solely on what the image shows.\n"
+"Example:\n"
+"Q: \"Is the red dot above the blue dot\" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+
+Here is an **example of the output `.json`** structure
+
+```json
+{
+    "file_name": "amos_0221.nii_slice-279_classes-27_perc-14.png",
+    "results_call": [
+        {
+            "question": "Is the left lung upper lobe (10) to the right of the left clavicula (73)?",
+            "model_answer": "0",
+            "expected_answer": 1,
+            "entire_prompt": "The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. Your output must contain exactly one character: '1' or '0'.Ignore anatomical correctness; focus solely on what the image shows.\nExample:\nQ: Is the right iliopsoas (89) to the left of the left gluteus maximus (80)? A: 1\nNow answer the real question:\n\nQ: Is the left lung upper lobe (10) to the right of the left clavicula (73)?"
+        }
+    ]
+},
+{
+    "file_name": "amos_0482.nii_slice-234_classes-26_perc-19.png",
+    "results_call": [
+        {
+            "question": "Is the right scapula (72) above the left scapula (71)?",
+            "model_answer": "1",
+            "expected_answer": 1,
+            "entire_prompt": "The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. Your output must contain exactly one character: '1' or '0'.Ignore anatomical correctness; focus solely on what the image shows.\nExample:\nQ: Is the left autochthon (86) to the right of the liver (5)? A: 1\nNow answer the real question:\n\nQ: Is the right scapula (72) above the left scapula (71)?"
+        }
+    ]
+}
+```
+
 </details>
 
 
