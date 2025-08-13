@@ -21,7 +21,7 @@ Usage Instructions:
    "Paths and Experiment Selection".
    1.1 Set `dataset_dir` to the path where your dataset is stored.
    1.2 Set `RESULTS_ROOT` to the directory where you want to save the results.
-   1.3 Specify the experiments you want to run in the `experiments` list (e.g., ['RQ1', 'RQ2']).
+   1.3 Select the experiment you want to run in the `experiments` list (e.g., ['RQ2']).
 2. Run the script.
 3. For each task, a dedicated results folder will be created, and responses will be saved in
    JSON format for each run (3 runs per task by default).
