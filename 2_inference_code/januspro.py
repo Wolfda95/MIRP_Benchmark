@@ -287,7 +287,10 @@ if __name__ == "__main__":
                 results_file_name = f"{selected_qa.replace('.json', '')}_{mo_file_name_appendix}_add_run_{i}.json"
 
                 save_name = os.path.join(
-                    RESULTS_BASE, results_file_name)
+                    RESULTS_ROOT, results_file_name)
+
+                # Ensure the directory exists
+                os.makedirs(os.path.dirname(save_name), exist_ok=True)
 
                 with open(save_name, 'w') as json_file:
                     json.dump(dataset_results, json_file, indent=4)
