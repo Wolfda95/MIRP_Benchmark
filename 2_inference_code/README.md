@@ -31,7 +31,7 @@ After inference is completed and the model answers are saved in the json file, p
 4.  Open `pixtral.py` and scroll to the main block (`if __name__ == "__main__":`) and locate the section: "Paths and Experiment Selection".
     * Set `dataset_dir` to the path where the downloaded MIRP dataset is stored.
     * Set `RESULTS_ROOT` to the directory where you want to save the results.
-    * Select the Research Question you want to run in the `experiments` list (e.g., ['RQ2'] if you want to run Research Question 2) *(The code will make 3 runs for each marker type.)*
+    * Select the Research Question you want to run in the `experiments` list (e.g., ['RQ2'] if you want to run Research Question 2) *(The code will make 3 runs for each marker type.)* (If you select ['RQ2'], this will be the data for RQ3(2), if you want RQ3(1), select RQ1 (because RQ1 and RQ3(2) process the same Dataset) and at the [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code) select the correct evaluation script. 
 5. Run `pixtral.py`.
 
 -> For each task, a dedicated results folder will be created, and responses will be saved in JSON format for each run (3 runs per selected Research Question and marker type)
