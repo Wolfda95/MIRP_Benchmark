@@ -68,7 +68,7 @@ Here you can check **how many answers are correct** and **compute the statistics
    - The three runs for a setup are named:
       - `..._run_0.json`
       - `..._run_1.json`
-      - `..._run_3.json`
+      - `..._run_2.json`
 
 <br/><br/>
 
@@ -123,7 +123,7 @@ To run a different Hugging Face model that is compatible with the **vLLM** libra
 
 
 <details>
-<summary><h3>How to run other Proprietary Models from Hugging Face</h3></summary>
+<summary><h3>Run other Proprietary Models</h3></summary>
   
  ### Test
  
