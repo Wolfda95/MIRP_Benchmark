@@ -294,6 +294,10 @@ def make_better_api_call(questions_data, base64_image, additional_question):
         }
     ]
 
+    
+    # ──────────────────────────────────────────────────────────────────────────────
+    #  Model
+    # ──────────────────────────────────────────────────────────────────────────────
     response = openai.chat.completions.create(
         model="gpt-4o-2024-08-06",
         messages=[
@@ -301,6 +305,7 @@ def make_better_api_call(questions_data, base64_image, additional_question):
         ],
         temperature=0
     )
+    # ──────────────────────────────────────────────────────────────────────────────
 
     model_answer = response.choices[0].message.content
 
