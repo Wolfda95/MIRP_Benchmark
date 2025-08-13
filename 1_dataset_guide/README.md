@@ -15,7 +15,7 @@ This folder structure here mirrors the structure of the full dataset but contain
 
 <br/>
 
-### **Next Step**
+### ⏭️ **Next Step**
 After downloading and extracting the dataset, please:
 1. Familiarize yourself with the structure (see below).  
 2. Continue to the [`2_inference_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/2_inference_code) folder to run inference.
