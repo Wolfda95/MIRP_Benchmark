@@ -42,6 +42,8 @@ The evaluation scripts assess a model’s predictions for a specific task across
       Evaluates whether the model’s answers are correct based on:  
           1. Image orientation  
           2. Standard human anatomy
+     
+   If you need to refresh your memory on the research questions (RQ), read the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/)
 
 
    
