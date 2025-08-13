@@ -3,7 +3,7 @@ Script for Running Visual QA Experiments with DeepSeek's JanusPro model locally.
 
 Overview:
 This script processes medical images and related questions, sends them through a locally
-loaded Llama3.2 model, and stores the model’s binary responses in structured JSON files for further analysis.
+loaded JanusPro model, and stores the model’s binary responses in structured JSON files for further analysis.
 
 
 Prerequisites:
