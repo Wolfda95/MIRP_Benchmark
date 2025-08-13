@@ -29,7 +29,7 @@ Here you can check **how many answers are correct** and **compute the statistics
 
 ---
 # Instructions
-## <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20"/> How to run the Open Models locally
+## <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20"/> How to run the Open Models on a local GPU
 
 <details>
 <summary><h3>Pixtral</h3></summary>
