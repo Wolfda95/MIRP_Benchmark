@@ -48,6 +48,6 @@ It computes mean and standard deviation of accuracy and F1 score over the 3 runs
 <br/>
 
 ### ⏭️ Next Step
-Once inference is done and the answers are saved in the `.json` file, continue to:  
-[`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code)  
-Here you can check **how many answers are correct** and **compute the statistics**.
+You can compare your resuls with ours:  
+[`our_results/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/our_results)  
+
