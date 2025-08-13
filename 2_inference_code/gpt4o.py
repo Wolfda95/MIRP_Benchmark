@@ -200,7 +200,7 @@ def get_clean_image(image_path):
         print(encoded_image)
         ```
     """
-    with Image.open(original_image_path) as img:
+    with Image.open(image_path) as img:
         rgb_image = ensure_rgb(img)
     base64_image = encode_image_from_bytes(rgb_image)
 
