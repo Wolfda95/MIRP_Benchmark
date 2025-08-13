@@ -10,7 +10,7 @@ Both options provide a `.zip` file containing the datasets for all Research Ques
 <br/>
 
 ### **Preview Before Downloading**
-If you want to check how the dataset looks like before downloading it:  <br>
+If you would like to see what the dataset looks like before downloading it:  <br>
 This folder structure here mirrors the structure of the full dataset but contains **only 10 example cases** for each setup.  
 
 <br/>
