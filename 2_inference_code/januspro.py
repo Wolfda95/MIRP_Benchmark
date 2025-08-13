@@ -44,7 +44,7 @@ Functionality Summary:
 Notes:
 - The model runs locally via `transformers`; no internet or API key is required.
 - The script uses a fixed random seed (`random.seed(2025)`) to ensure reproducibility.
-- Ensure adequate GPU memory is available for running the 12B Pixtral model.
+- Ensure adequate GPU memory is available for running the Janus Pro model.
 """
 
 
