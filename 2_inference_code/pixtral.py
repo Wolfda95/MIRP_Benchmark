@@ -202,7 +202,7 @@ def get_clean_image(image_path):
         print(encoded_image)
         ```
     """
-    with Image.open(original_image_path) as img:
+    with Image.open(image_path) as img:
         rgb_image = ensure_rgb(img)
     base64_image = encode_image_from_bytes(rgb_image)
 
@@ -420,7 +420,10 @@ if __name__ == "__main__":
                 results_file_name = f"{selected_qa.replace('.json', '')}_{mo_file_name_appendix}_add_run_{i}.json"
 
                 save_name = os.path.join(
-                    RESULTS_BASE, results_file_name)
+                    RESULTS_ROOT, results_file_name)
+
+                # Ensure the directory exists
+                os.makedirs(os.path.dirname(save_name), exist_ok=True)
 
                 with open(save_name, 'w') as json_file:
                     json.dump(dataset_results, json_file, indent=4)
