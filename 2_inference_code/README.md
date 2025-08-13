@@ -19,6 +19,13 @@ After inference is completed and the model answers are saved in the json file, p
 <br/> <br/>
 # How to run the Open Models
 
+<details>
+<summary><h2>Pixtral</h2></summary>
+  
+ ### Test
+ 
+</details>
+
 
 # How to run the Proprietary Models
 
