@@ -54,7 +54,8 @@ Here you can check **how many answers are correct** and **compute the statistics
        - The script makes **3 runs for each marker type**  
        - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
        - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
-         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+           Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script. <br>
+   -  If you need to refresh your memory on the research questions (RQ), read the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/)
 
 5. **Run the script**  
    ```bash
@@ -103,7 +104,8 @@ To run a different Hugging Face model that is compatible with the **vLLM** libra
        - The script makes **3 runs for each marker type**  
        - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
        - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
-         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+         Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script. <br>
+   -  If you need to refresh your memory on the research questions (RQ), read the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/)
 
 5. **Run the script**  
    ```bash
@@ -152,7 +154,8 @@ To run a different Hugging Face model that is compatible with the **Transformer*
        - The script makes **3 runs for each marker type**  
        - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
        - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
-         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+         Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script. <br>
+   -  If you need to refresh your memory on the research questions (RQ), read the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/)
 
 5. **Run the script**  
    ```bash
@@ -267,7 +270,8 @@ Here you can sign up for an OpenAI API: [OpenAI Platform](https://platform.opena
        - The script makes **3 runs for each marker type**  
        - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
        - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
-         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+         Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script. <br>
+   -  If you need to refresh your memory on the research questions (RQ), read the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/)
          
 3. **Add OpenAI API Key**  
    Add your API key as the environment variable `OPENAI_API_KEY`  
