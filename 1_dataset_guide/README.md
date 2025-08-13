@@ -5,7 +5,7 @@ You can download the full MIRP Benchmark dataset in two ways:
 - <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20"/> **Hugging Face**: [MIRP_Hugging_Face](https://huggingface.co/datasets/Wolfda95/MIRP_Your_Other_Left/tree/main)  
 - <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" height="20"/> **Google Drive**: [MIRP_Google_Drive](https://drive.google.com/file/d/1ILjP6koHgHI7pkXcoce70nNncyz-48KM/view)  
 
-Both options provide a `.zip` file containing the datasets for all Research Questions (RQ1, RQ2, RQ3) and the Ablation Study (AS). 
+Both options provide a `.zip` file (6.6GB) containing the datasets for all Research Questions (RQ1, RQ2, RQ3) and the Ablation Study (AS). 
 
 <br/>
 
