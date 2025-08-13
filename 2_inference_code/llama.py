@@ -314,7 +314,7 @@ if __name__ == "__main__":
 
     RESULTS_ROOT = 'results'  # path for results directory
 
-    experiments = ['RQ1', 'RQ2', 'RQ3', 'AS']  # select the experiments here
+    experiments = ['RQ2']  # select the experiments here: 'RQ1', 'RQ2', 'RQ3', 'AS'e
     # ──────────────────────────────────────────────────────────────────────────────
 
     for exp in experiments:
