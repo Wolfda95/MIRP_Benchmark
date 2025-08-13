@@ -29,7 +29,7 @@ Here you can check **how many answers are correct** and **compute the statistics
 
 ---
 # 📂 Instructions
-## How to run the Open Models
+## How to run the Open Models locally
 
 <details>
 <summary><h3>Pixtral</h3></summary>
@@ -46,10 +46,7 @@ Here you can check **how many answers are correct** and **compute the statistics
    - **External:** `torch`, `PIL` (Pillow), `vllm`
 
 4. **Configure `pixtral.py`**  
-   - Open `pixtral.py` and scroll to the main block:  
-     ```python
-     if __name__ == "__main__":
-     ```
+   - Open `pixtral.py` and scroll to the main block `if __name__ == "__main__":`
    - In the **"Paths and Experiment Selection"** section:  
      - Set `dataset_dir` → path to your downloaded MIRP dataset  
      - Set `RESULTS_ROOT` → directory where results should be saved  
@@ -74,11 +71,7 @@ Here you can check **how many answers are correct** and **compute the statistics
 
 **_Use this Code with other Models of the vLLM Libary_** <br/>
 To run a different Hugging Face model that is compatible with the **vLLM** library:  
-- Open the script and scroll to the main block:
-  ```python
-  if __name__ == "__main__":
-      ...
-  ```
+- Open the script and scroll to the main block `if __name__ == "__main__":`
 - In the **"Model"** section, replace the current model name with the desired Hugging Face model name.
 - Dpending on the model, you might have to change more 
 
@@ -90,7 +83,48 @@ To run a different Hugging Face model that is compatible with the **vLLM** libra
 <details>
 <summary><h3>Llama3.2</h3></summary>
   
- ### Test
+ 1. **Download the model**  
+   Get [Llama-3.2-11B-Vision-Instruct](https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct) from Hugging Face.  
+     - On Hugging Face, click the **three dots** on the right → **Clone repository** → follow the listed steps.
+
+2. **Place the model in the repository**  
+   - Store it inside a subdirectory named `models` (no additional subfolders).
+
+3. **Install required Python packages**  
+   - **Built-in:** `os`, `sys`, `json`, `random`, `time`  
+   - **External:** `torch`, `PIL` (Pillow), `transformers`
+
+4. **Configure `llama.py`**  
+   - Open `llama.py` and scroll to the main block `if __name__ == "__main__":`  
+   - In the **"Paths and Experiment Selection"** section:  
+     - Set `dataset_dir` → path to your downloaded MIRP dataset  
+     - Set `RESULTS_ROOT` → directory where results should be saved  
+     - Select the Research Question in the `experiments` list (e.g., `['RQ2']` to run RQ2)  
+       - The script makes **3 runs for each marker type**  
+       - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
+       - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
+         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+
+5. **Run the script**  
+   ```bash
+   python llama.py
+
+6. **Output**  
+   - Model answers are saved as separate .json files — one per marker type and run.
+   - The three runs for a setup are named:
+      - `..._run_0.json`
+      - `..._run_1.json`
+      - `..._run_2.json`
+
+<br/><br/>
+
+**_Use this Code with other Models of the Transformer Libary_** <br/>
+To run a different Hugging Face model that is compatible with the **Transformer** library:  
+- Open the script and scroll to the main block `if __name__ == "__main__":`
+- In the **"Model"** section, replace the current model name with the desired Hugging Face model name.
+- Dpending on the model, you might have to change more
+
+ <br/><br/>
  
 </details>
 
@@ -98,7 +132,39 @@ To run a different Hugging Face model that is compatible with the **vLLM** libra
 <details>
 <summary><h3>JanusPro</h3></summary>
   
- ### Test
+  1. **Download the model**  
+   Get [Janus-Pro-7B](https://huggingface.co/deepseek-ai/Janus-Pro-7B) from Hugging Face.  
+     - On Hugging Face, click the **three dots** on the right → **Clone repository** → follow the listed steps.
+
+2. **Place the model in the repository**  
+   - Store it inside a subdirectory named `models` (no additional subfolders).
+
+3. **Install required Python packages**  
+   - **Built-in:** `os`, `sys`, `json`, `random`, `time`  
+   - **External:** `torch`, `PIL` (Pillow), `transformers`, `janus`
+
+4. **Configure `llama.py`**  
+   - Open `januspro.py` and scroll to the main block `if __name__ == "__main__":`  
+   - In the **"Paths and Experiment Selection"** section:  
+     - Set `dataset_dir` → path to your downloaded MIRP dataset  
+     - Set `RESULTS_ROOT` → directory where results should be saved  
+     - Select the Research Question in the `experiments` list (e.g., `['RQ2']` to run RQ2)  
+       - The script makes **3 runs for each marker type**  
+       - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
+       - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
+         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+
+5. **Run the script**  
+   ```bash
+   python januspro.py
+
+6. **Output**  
+   - Model answers are saved as separate .json files — one per marker type and run.
+   - The three runs for a setup are named:
+      - `..._run_0.json`
+      - `..._run_1.json`
+      - `..._run_2.json`
+
  
 </details>
 
@@ -112,7 +178,7 @@ To run a different Hugging Face model that is compatible with the **vLLM** libra
 
 
 
-## How to run the Proprietary Models
+## How to run the Proprietary Models via API
 
 <details>
 <summary><h3>GPT4o</h3></summary>
