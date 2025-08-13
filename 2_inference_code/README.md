@@ -284,7 +284,8 @@ Here you can sign up for an OpenAI API: [OpenAI Platform](https://platform.opena
 <br/><br/>
 
 **_Use this Code with other Models from OpenAI_** <br/> 
-- Open the `gpt4o.py` and scroll to "# Model":
+- Use `gpt4o.py` and its instructions. 
+- Scroll to "# Model":
 - Replace the current model name (gpt-4o-2024-08-06) with the desired model name.
 - Here you can find all openAI Models: [OpenAI Platform Models](https://platform.openai.com/docs/models) 
 
