@@ -34,19 +34,44 @@ Here you can check **how many answers are correct** and **compute the statistics
 <details>
 <summary><h3>Pixtral</h3></summary>
 
-1. Download the model [Pixtral-12B-2409](https://huggingface.co/mistralai/Pixtral-12B-2409) from Hugging Face.
-    * In Hugging Face click on the 3 dots on the right side, then on Clone repository, then do the steps listed there
-2.  Place the downloaded model in a subdirectory called `models` without subfolders.
-3. Required Python packages:
-    - Built-in: `os`, `sys`, `json`, `random`, `time`, `base64`, `io`
-    - External: `torch`, `PIL` (Pillow), `vllm`
-4.  Open `pixtral.py` and scroll to the main block (`if __name__ == "__main__":`) and locate the section: "Paths and Experiment Selection".
-    * Set `dataset_dir` to the path where the downloaded MIRP dataset is stored.
-    * Set `RESULTS_ROOT` to the directory where you want to save the results.
-    * Select the Research Question you want to run in the `experiments` list (e.g., ['RQ2'] if you want to run Research Question 2) *(The code will make 3 runs for each marker type.)* (If you select ['RQ3'], this will be the data for RQ3(2), if you want RQ3(1), select RQ1 (because RQ1 and RQ3(2) use the same Dataset) and at [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code) select the correct evaluation script. 
-5. Run `pixtral.py`.
+1. **Download the model**  
+   Get [Pixtral-12B-2409](https://huggingface.co/mistralai/Pixtral-12B-2409) from Hugging Face.  
+   - On Hugging Face, click the **three dots** on the right → **Clone repository** → follow the listed steps.
 
--> The model answers for each marker type and each run will be saved in a separate json file. The 3 runs of one setup have the ending `..._run_0.json`, `..._run_1.json`, `..._run_3.json`
+2. **Place the model in the repository**  
+   - Store it inside a subdirectory named `models` (no additional subfolders).
+
+3. **Install required Python packages**  
+   - **Built-in:** `os`, `sys`, `json`, `random`, `time`, `base64`, `io`  
+   - **External:** `torch`, `PIL` (Pillow), `vllm`
+
+4. **Configure `pixtral.py`**  
+   - Open `pixtral.py` and scroll to the main block:  
+     ```python
+     if __name__ == "__main__":
+     ```
+   - In the **"Paths and Experiment Selection"** section:  
+     - Set `dataset_dir` → path to your downloaded MIRP dataset  
+     - Set `RESULTS_ROOT` → directory where results should be saved  
+     - Select the Research Question in the `experiments` list (e.g., `['RQ2']` to run RQ2)  
+       - The script makes **3 runs for each marker type**  
+       - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
+       - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
+         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+
+5. **Run the script**  
+   ```bash
+   python pixtral.py
+
+<br/>
+
+**Output** <br/>
+Model answers are saved as separate .json files — one per marker type and run.
+
+The three runs for a setup are named:
+- `..._run_0.json`
+- `..._run_1.json`
+- `..._run_3.json`
   
  
 </details>
