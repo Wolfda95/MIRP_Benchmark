@@ -28,8 +28,8 @@ Here you can check **how many answers are correct** and **compute the statistics
 <br/> <br/>
 
 ---
-# 📂 Instructions
-## How to run the Open Models locally
+# Instructions
+## <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20"/> How to run the Open Models locally
 
 <details>
 <summary><h3>Pixtral</h3></summary>
@@ -243,12 +243,52 @@ Here is an **example of the output `.json`** structure
 
 
 
-## How to run the Proprietary Models via API
+## 🔑 How to run the Proprietary Models via API
 
 <details>
 <summary><h3>GPT4o</h3></summary>
   
- ### Test
+This code sends the image-question pairs via the API to OpenAI's GPT-4o model. You don`t need a GPU to run this code. You pay per token. 
+
+Here you can sign up for an OpenAI API: [OpenAI Platform](https://platform.openai.com/docs/overview) 
+
+1. **Install required Python packages**  
+   - **Built-in:** `os`, `sys`, `json`, `random`, `time`, `io`, `base64`  
+   - **External:** `openai`, `PIL` (from Pillow)
+
+2. **Configure `gpt4o.py`**  
+   - Open `gpt4o.py` and scroll to the main block `if __name__ == "__main__":`  
+   - In the **"Paths and Experiment Selection"** section:  
+     - Set `dataset_dir` → path to your downloaded MIRP dataset  
+     - Set `RESULTS_ROOT` → directory where results should be saved  
+     - Select the Research Question in the `experiments` list (e.g., `['RQ2']` to run RQ2)  
+       - The script makes **3 runs for each marker type**  
+       - If running `['RQ3']`, note this corresponds to **RQ3(2)**  
+       - For **RQ3(1)**, use `['RQ1']` (RQ1 and RQ3(2) share the same dataset)  
+         → Then, in [`3_evaluation_code/`](https://github.com/Wolfda95/MIRP_Benchmark/tree/main/3_evaluation_code), choose the matching evaluation script.
+         
+3. **Add OpenAI API Key**  
+   Add your API key as the environment variable `OPENAI_API_KEY`  
+
+5. **Run the script**  
+   ```bash
+   python gpt4o.py
+
+6. **Output**  
+   - Model answers are saved as separate .json files — one per marker type and run.
+   - The three runs for a setup are named:
+      - `..._run_0.json`
+      - `..._run_1.json`
+      - `..._run_2.json`
+
+<br/><br/>
+
+**_Use this Code with other Models from OpenAI_** <br/> 
+- Open the `gpt4o.py` and scroll to "# Model":
+- Replace the current model name (gpt-4o-2024-08-06) with the desired model name.
+- Here you can find all openAI Models: [OpenAI Platform Models](https://platform.openai.com/docs/models) 
+
+ <br/><br/>
  
 </details>
 
@@ -256,7 +296,67 @@ Here is an **example of the output `.json`** structure
 <details>
 <summary><h3>Run other Proprietary Models</h3></summary>
   
- ### Test
+ ### Other Models from OpenAI: 
+- Open the `gpt4o.py` and scroll to "# Model":
+- Replace the current model name (gpt-4o-2024-08-06) with the desired model name.
+- Here you can find all openAI Models: [OpenAI Platform Models](https://platform.openai.com/docs/models)
+
+### Models from other companies: 
+Search for tutorials on how to run their models via the API. <br>
+If you start with a new code, make sure to use the **initial prompts**: 
+
+RQ1, RQ2, RQ3
+```python
+"The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. "
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Ignore anatomical correctness; focus solely on what the image shows.\n"
+"Example:\n"
+"Q: \"Is the aorta above the spleen?\" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+
+AS (Ablation Study)
+```python
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Focus solely on what the image shows.\n"
+"Example:\n"
+"Q: \"Is the red dot above the blue dot\" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+
+Here is an **example of the output `.json`** structure
+
+```json
+{
+    "file_name": "amos_0221.nii_slice-279_classes-27_perc-14.png",
+    "results_call": [
+        {
+            "question": "Is the left lung upper lobe (10) to the right of the left clavicula (73)?",
+            "model_answer": "0",
+            "expected_answer": 1,
+            "entire_prompt": "The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. Your output must contain exactly one character: '1' or '0'.Ignore anatomical correctness; focus solely on what the image shows.\nExample:\nQ: Is the right iliopsoas (89) to the left of the left gluteus maximus (80)? A: 1\nNow answer the real question:\n\nQ: Is the left lung upper lobe (10) to the right of the left clavicula (73)?"
+        }
+    ]
+},
+{
+    "file_name": "amos_0482.nii_slice-234_classes-26_perc-19.png",
+    "results_call": [
+        {
+            "question": "Is the right scapula (72) above the left scapula (71)?",
+            "model_answer": "1",
+            "expected_answer": 1,
+            "entire_prompt": "The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. Your output must contain exactly one character: '1' or '0'.Ignore anatomical correctness; focus solely on what the image shows.\nExample:\nQ: Is the left autochthon (86) to the right of the liver (5)? A: 1\nNow answer the real question:\n\nQ: Is the right scapula (72) above the left scapula (71)?"
+        }
+    ]
+}
+```
+
+
+ 
  
 </details>
 
