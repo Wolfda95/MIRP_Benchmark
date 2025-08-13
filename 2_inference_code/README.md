@@ -63,16 +63,26 @@ Here you can check **how many answers are correct** and **compute the statistics
    ```bash
    python pixtral.py
 
-<br/>
+6. **Output**  
+   - Model answers are saved as separate .json files — one per marker type and run.
+   - The three runs for a setup are named:
+      - `..._run_0.json`
+      - `..._run_1.json`
+      - `..._run_3.json`
 
-**Output** <br/>
-Model answers are saved as separate .json files — one per marker type and run.
+<br/><br/>
 
-The three runs for a setup are named:
-- `..._run_0.json`
-- `..._run_1.json`
-- `..._run_3.json`
-  
+**_Use this Code with other Models of the vLLM Libary_** <br/>
+To run a different Hugging Face model that is compatible with the **vLLM** library:  
+- Open the script and scroll to the main block:
+  ```python
+  if __name__ == "__main__":
+      ...
+  ```
+- In the **"Model"** section, replace the current model name with the desired Hugging Face model name.
+- Dpending on the model, you might have to change more 
+
+<br/><br/>
  
 </details>
 
