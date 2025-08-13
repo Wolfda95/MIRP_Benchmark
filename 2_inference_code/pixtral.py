@@ -318,7 +318,7 @@ if __name__ == "__main__":
     sampling_params = SamplingParams(max_tokens=8192)
 
     llm = LLM(
-        model="models/Pixtral-12B-2409",
+        model=model_dir,
         tokenizer_mode="mistral",
         gpu_memory_utilization=0.95,  # Maximale GPU-Nutzung
         max_model_len=32000,          # Reduzierte Sequenzlänge
