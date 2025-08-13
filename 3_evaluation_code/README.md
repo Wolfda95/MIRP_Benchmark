@@ -25,7 +25,21 @@
               ├── <base>_run_1.json
               └── <base>_run_2.json
       ```
+3. **Requirements**
+   ```
+   requirements.txt
+   ```
+4. **Run Evaluation**
+   - **Image-Based** (Research Question 1, 2, 3(2))
+      ```
+       python run RQ1_RQ2_RQ3-2_calculate_results_image.py
+      ```
+  - **Image-Based** (Research Question 1, 2, 3(2))
+  ```
+   python run RQ1_RQ2_RQ3-2_calculate_results_image.py
+  ```
 
+   
 <br/>
 
 ### ⏭️ Next Step
