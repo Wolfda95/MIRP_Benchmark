@@ -28,17 +28,17 @@ It computes mean and standard deviation of accuracy and F1 score over the 3 runs
       ```
 2. **Install the Requirements**
    ```
-   requirements.txt
+   pip install requirements.txt
    ```
 4. **Run the Evaluation**
    - **Image-Based** (Research Question 1, 2, 3(2))
       ```
-       python run RQ1_RQ2_RQ3-2_calculate_results_image.py
+       python RQ1_RQ2_RQ3-2_calculate_results_image.py
       ```
       This script evaluates a model's responses to the left/right spatial relation questions by checking if they are correct based on the image orientation. 
    - **Anatomy-Based** (Research Question 3(1))
       ```
-       python run RQ3-1_calculate_results_anatomy.py
+       python RQ3-1_calculate_results_anatomy.py
       ```
       This script evaluates a model's responses to the left/right spatial relation questions by comparing:
         1. The correct spatial relationships based on the image orientation (image-based evaluation).
