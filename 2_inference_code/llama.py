@@ -155,31 +155,10 @@ def ensure_rgb(image):
 
 
 def get_clean_image(image_path):
-    """
-    Loads an image, ensures it is in RGB mode, and encodes it as a base64 string.
-
-    Args:
-        image_path (str): The file path to the image.
-
-    Returns:
-        str: The base64-encoded representation of the image.
-
-    This function performs the following steps:
-    1. Opens the image from the given path.
-    2. Converts it to RGB mode if necessary using `ensure_rgb()`.
-    3. Encodes the processed image into a base64 string using `encode_image_from_bytes()`.
-
-    Example:
-        ```python
-        encoded_image = get_clean_image("example.png")
-        print(encoded_image)
-        ```
-    """
     with Image.open(image_path) as img:
         rgb_image = ensure_rgb(img)
-    base64_image = encode_image_from_bytes(rgb_image)
 
-    return base64_image
+    return rgb_image
 
 
 def get_qa(img_file_name, json_dir):
@@ -267,19 +246,25 @@ def make_model_call(model, questions_data, image, additional_question):
 
     input_text = processor.apply_chat_template(
         messages, add_generation_prompt=True)
+
+    # Use explicit keyword args 
     inputs = processor(
-        image,
-        input_text,
-        add_special_tokens=False,
+        images=image,
+        text=input_text,
         return_tensors="pt"
     ).to(model.device)
 
+    # max_new_tokens
     output = model.generate(**inputs, max_new_tokens=1024)
 
-    model_answer = processor.decode(output[0])
+    # slice off prompt tokens; keep only generated tokens
+    gen_ids = output[:, inputs["input_ids"].shape[-1]:]
 
-    cleaned_answer = model_answer.split(
-        '>', 7)[-1].replace('<|eot_id|>', '')
+    # decode properly and skip special tokens
+    model_answer = processor.batch_decode(gen_ids, skip_special_tokens=True)[0].strip()
+
+    # Keep your post-processing shape
+    cleaned_answer = model_answer
 
     results.append({
         "question": questions_data['question'],
