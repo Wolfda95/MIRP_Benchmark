@@ -211,6 +211,8 @@ AS (Ablation Study)
 "Now answer the real question:\n\n"
 f"Q: {question_from_json}"
 ```
+The example questions in the fixed prompt are chosen to match the question in the task. <br> 
+For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>
 
 Here is an **example of the output `.json`** structure
 
@@ -328,6 +330,8 @@ AS (Ablation Study)
 "Now answer the real question:\n\n"
 f"Q: {question_from_json}"
 ```
+The example questions in the fixed prompt are chosen to match the question in the task. <br> 
+For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>
 
 Here is an **example of the output `.json`** structure
 
