@@ -27,8 +27,16 @@ After downloading and extracting the dataset, please:
 
 Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation Study (AS)** contains:  
 - **Image folders** with the rotated/flipped CT slices  
-- **JSON files** with corresponding question-answer (QA) pairs for each CT slice  
+- **JSON files** with corresponding question-answer (QA) pairs for each CT slice
 
+<br/>
+
+**Note:**  
+- **RQ3** is the dataset we used for **RQ3(2)**.  
+- For **RQ3(1)**, we use the **same data as RQ1** — only the evaluation method later differs (answers are later checked for standard anatomy correctness instead of image orientation correctness). 
+- Need a refresher on the research questions? Check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
+
+<br/>
 
 ### **Folder Structure**  
 
@@ -58,7 +66,7 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 - `image_numbers/` – White images with number markers  
 - `qa_dots.json` – QA pairs for dot markers 
 - `qa_letters.json` – QA pairs for letter markers  
-- `qa_numbers.json` – QA pairs for number markers 
+- `qa_numbers.json` – QA pairs for number markers
 
 ----
 
