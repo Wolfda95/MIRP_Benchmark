@@ -68,7 +68,7 @@ Each subdirectory includes a **`README.md`** with further details.
 # For Details about the Paper, Visit our Project Page: 
 
 [![Project Page](static/GitHub.PNG)](https://wolfda95.github.io/your_other_left/)
-[**Project Page**]([1_dataset_guide](https://wolfda95.github.io/your_other_left/))
+[**Project Page**](https://wolfda95.github.io/your_other_left/)
 
 
 ---
