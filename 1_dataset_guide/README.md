@@ -41,11 +41,11 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 
 ### **Folder Structure**  
 
-#### 📁 **RQ1**  
+#### 📁 **RQ1 (Research Question 1)**  
 - `images/` – CT slices  
 - `qa.json` – Question-answer pairs
 
-#### 📁 **RQ2**  
+#### 📁 **RQ2 (Research Question 2)**  
 - `image_dots/` – CT slices with dot markers  
 - `image_letters/` – CT slices with letter markers  
 - `image_numbers/` – CT slices with number markers  
@@ -53,7 +53,7 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 - `qa_letters.json` – QA pairs with anatomical names for letter markers  
 - `qa_numbers.json` – QA pairs with anatomical names for number markers  
 
-#### 📁 **RQ3**  
+#### 📁 **RQ3 (Research Question 3(2))**  
 - `image_dots/` – CT slices with dot markers  
 - `image_letters/` – CT slices with letter markers  
 - `image_numbers/` – CT slices with number markers  
@@ -105,6 +105,8 @@ The [`2_inference_code/`](2_inference_code) already contains those fixed prompts
 ------
 ## Anatomic Structures: 
 We extracted the anatomical structures that the questions refer to using the Totalsegmentatior: https://github.com/wasserth/TotalSegmentator
+
+The correct answers to the relative positioning questions are obtained by comparing the centers of mass of the two structures being evaluated. 
 
 Here is the list of all the structures (we have grouped the different vertebrae and ribs together): 
 
@@ -181,3 +183,5 @@ Here is the list of all the structures (we have grouped the different vertebrae 
   93 | rib_right |
   116 | sternum |
   117 | costal_cartilages |
+
+  
