@@ -184,4 +184,45 @@ Here is the list of all the structures (we have grouped the different vertebrae 
   116 | sternum |
   117 | costal_cartilages |
 
+------
+## Question-Answer JSON Files
+This is one exmaple element of a question answer json file. 
+  ```
+  {
+    "filename": "amos_0002.nii_slice-20_classes-22_perc-12.png",
+    "base_name": "amos_0002.nii",
+    "slice_index": 20,
+    "classes_count": 22,
+    "multiple_components_same_label": true,
+    "question_answer": [
+      {
+        "object1_name": "left kidney",
+        "object2_name": "inferior vena cava",
+        "object1_gray": 3,
+        "object2_gray": 63,
+        "object1_center_x": 346.97574777687953,
+        "object1_center_y": 214.49151172190784,
+        "object2_center_x": 231.29456193353474,
+        "object2_center_y": 290.3836858006042,
+        "question": "Is the left kidney below the inferior vena cava?",
+        "answer": 0
+      }
+    ],
+    "rotate_flip_short": "A3",
+    "rotate_flip_long": "Horizontal flip and 180 degree rotation"
+  },
+```
+- `filename`: Filename of the PNG image to match the question to the image
+- `base_name`: The original CT volume where the slice was extraced from (Either a volume from the [Amos](https://zenodo.org/records/7155725) dataset or from the [BTCV](https://zenodo.org/records/1169361) dataset)
+- `slice_index`: Slice number within the CT volume.
+- `classes_count`: Number of anatomical structures segmented by TotalSegmentator that are visible in the slice.
+- `multiple_components_same_label`: Whether there are multiple disconnected components of the same anatomical structure in the slice. (We only asked questions about structures that appear once per slice.)
+- `question_answer`
+  - `object_name`: Anatomical names of the structures.
+  - `object_gray`: Label index from the TotalSegmentator table (used for number markers; letter markers start at AA for 1 and continue with AB, AC, …).
+  - `object_center`: x and y coordinates of the center of mass of the two structures the correct answers to the questions were derived from these centers).
+  - `question`: The question presented to the model.
+  - `answer`: The correct answer (0 = no, 1 = yes).
+- `rotate_flip_short`: Information on how the image is roated and flipped (A: Flip: A1 0°, A2: 90°, A3: 180°, A4 270° || B: Not Flipped: B1 0°, B2: 90°, B3: 180°, B4 270°)
+
   
