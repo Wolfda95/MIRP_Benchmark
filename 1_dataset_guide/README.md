@@ -165,7 +165,7 @@ Here is the list of all the structures (we have grouped the different vertebrae 
 
 <br/>
 
-## Details on the Question-Answer JSON Files
+## Details on the Question-Answer JSON Files:
 This is one exmaple element of a question answer json file. 
   ```
   {
@@ -204,6 +204,8 @@ This is one exmaple element of a question answer json file.
   - `question`: The question presented to the model.
   - `answer`: The correct answer (0 = no, 1 = yes).
 - `rotate_flip_short`: Information on how the image is roated and flipped (A: Flip: A1 0°, A2: 90°, A3: 180°, A4 270° || B: Not Flipped: B1 0°, B2: 90°, B3: 180°, B4 270°)
+
+<br/>
 
 ----
 
