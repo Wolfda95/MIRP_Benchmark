@@ -32,14 +32,13 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 
 <br/>
 
-### Example for each Research Question: 
-For details, check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
-
+## Example for each Research Question: 
 ![My Image](../static/RQs.PNG)
+For details, check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
 
 <br/>
 
-### **Folder Structure**  
+## Folder Structure of the MIRP Dataset: 
 
 #### 📁 **RQ1 (Research Question 1)**  
 - `images/` – CT slices  
@@ -78,44 +77,13 @@ For details, check the paper summary on our [Project Page](https://wolfda95.gith
 
 <br/>
 
-----
-
-## Fixed Prompt: 
-The json files contain the questions that we pass to the model. 
-
-In addition to the question, we add a fixed text prompt: 
-
-#### RQ1, RQ2, RQ3: 
-```
-"The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. "
-"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
-"Your output must contain exactly one character: '1' or '0'."
-"Ignore anatomical correctness; focus solely on what the image shows.\n"
-"Example:\n"
-"Q: "Is the aorta above the spleen?" A: 1\n"
-"Now answer the real question:\n\n"
-f"Q: {question_from_json}"
-```
-#### AS: 
-```
-"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
-"Your output must contain exactly one character: '1' or '0'."
-"Focus solely on what the image shows.\n"
-"Example:\n"
-"Q: "Is the red dot above the blue dot" A: 1\n"
-"Now answer the real question:\n\n"
-f"Q: {question_from_json}"
-```
-The example questions in the fixed prompt are chosen to match the question in the task. <br> 
-For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
-
-The [`2_inference_code/`](2_inference_code) already contains those fixed prompts.
-
-------
-## Anatomic Structures: 
+## Anatomic Structures that we use in MIRP: 
 We extracted the anatomical structures that the questions refer to using the Totalsegmentatior: https://github.com/wasserth/TotalSegmentator
 
 The correct answers to the relative positioning questions are obtained by comparing the centers of mass of the two structures being evaluated. 
+
+<details>
+<summary><h3>List of all the Anatomical Structures</h3></summary>
 
 Here is the list of all the structures (we have grouped the different vertebrae and ribs together): 
 
@@ -192,9 +160,12 @@ Here is the list of all the structures (we have grouped the different vertebrae 
   93 | rib_right |
   116 | sternum |
   117 | costal_cartilages |
+  
+</details>
 
-------
-## Question-Answer JSON Files
+<br/>
+
+## Details on the Question-Answer JSON Files
 This is one exmaple element of a question answer json file. 
   ```
   {
@@ -233,5 +204,40 @@ This is one exmaple element of a question answer json file.
   - `question`: The question presented to the model.
   - `answer`: The correct answer (0 = no, 1 = yes).
 - `rotate_flip_short`: Information on how the image is roated and flipped (A: Flip: A1 0°, A2: 90°, A3: 180°, A4 270° || B: Not Flipped: B1 0°, B2: 90°, B3: 180°, B4 270°)
+
+----
+
+# Fixed Prompt: 
+The json files contain the questions that we pass to the model. 
+
+In addition to the question, we add a fixed text prompt: 
+
+#### RQ1, RQ2, RQ3: 
+```
+"The image is a 2D axial slice of an abdominal CT scan with soft tissue windowing. "
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Ignore anatomical correctness; focus solely on what the image shows.\n"
+"Example:\n"
+"Q: "Is the aorta above the spleen?" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+#### AS: 
+```
+"Answer strictly with '1' for Yes or '0' for No. No explanations, no additional text. "
+"Your output must contain exactly one character: '1' or '0'."
+"Focus solely on what the image shows.\n"
+"Example:\n"
+"Q: "Is the red dot above the blue dot" A: 1\n"
+"Now answer the real question:\n\n"
+f"Q: {question_from_json}"
+```
+The example questions in the fixed prompt are chosen to match the question in the task. <br> 
+For example, RQ2 with dot marks: <em>"Is the aorta (red) above the spleen (blue)?</em>  
+
+The [`2_inference_code/`](2_inference_code) already contains those fixed prompts.
+
+
 
   
