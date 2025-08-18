@@ -32,10 +32,10 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 
 <br/>
 
-**Note:**  
-- **RQ3** is the dataset we used for **RQ3(2)**.  
-- For **RQ3(1)**, we use the **same data as RQ1** — only the evaluation method later differs (answers are later checked for standard anatomy correctness instead of image orientation correctness). 
-- Need a refresher on the research questions? Check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
+### Example for each Research Question: 
+For details, check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
+
+![My Image](../static/RQs.PNG)
 
 <br/>
 
@@ -68,6 +68,15 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 - `qa_dots.json` – QA pairs for dot markers 
 - `qa_letters.json` – QA pairs for letter markers  
 - `qa_numbers.json` – QA pairs for number markers
+
+<br/>
+
+**Note:**  
+- **RQ3** is the dataset we used for **RQ3(2)**.  
+- For **RQ3(1)**, we use the **same data as RQ1** — only the evaluation method later differs (answers are later checked for standard anatomy correctness instead of image orientation correctness). 
+- Need a refresher on the research questions? Check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
+
+<br/>
 
 ----
 
