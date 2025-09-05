@@ -36,6 +36,9 @@ Each subfolder for the **Research Questions (RQ1, RQ2, RQ3)** and the **Ablation
 ![My Image](../static/RQs.PNG)
 For details, check the paper summary on our [Project Page](https://wolfda95.github.io/your_other_left/).
 
+All images in the Benchmark are abdominal CT slices extraced from either a volume of the [Amos](https://zenodo.org/records/7155725) dataset or a volume of the [BTCV](https://zenodo.org/records/1169361) dataset.
+
+
 <br/>
 
 ## Folder Structure of the MIRP Dataset: 
