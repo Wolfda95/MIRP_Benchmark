@@ -78,9 +78,10 @@ Each subdirectory includes a **`README.md`** with further details.
   title={Your other Left! Vision-Language Models Fail to Identify Relative Positions in Medical Images},
   author={Wolf, Daniel and Hillenhagen, Heiko and Taskin, Billurvan and B{\"a}uerle, Alex and Beer, Meinrad and G{\"o}tz, Michael and Ropinski, Timo},
   booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention -- MICCAI},
+  pages={691--701},
   year={2025},
   organization={Springer Nature Switzerland}
-  doi={tba}
+  doi={10.1007/978-3-032-04971-1_65}
 }
 ```
 If you have any questions, please email
